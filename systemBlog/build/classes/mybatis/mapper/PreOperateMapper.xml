@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuexi.mybatis.dao.PreOperateMapper">
+
+
+<!-- 	public List<Article> selectAll(); -->
+<select id="selectAll" resultType="com.xuexi.mybatis.Article">
+   select* from blogs order by id desc
+</select>
+
+<!-- public Article getone(@Param("id")int id); -->
+<select id="getone" resultType="com.xuexi.mybatis.Article">
+select* from blogs where id = #{id}
+</select>
+<!-- public List<Article> getbytype(@Param("type")String type); -->
+<select id="getbytype" resultType="com.xuexi.mybatis.Article">
+select* from blogs where type = #{type}
+</select>
+	<!--public List<Article> selectAllfive(); -->
+<select id="selectAllfive" resultType="com.xuexi.mybatis.Article">
+SELECT * FROM blogs ORDER BY RAND() LIMIT 2
+
+</select>
+<!--public List<Link> selectlink();--> 
+<select id="selectlink" resultType="com.xuexi.mybatis.Link">
+SELECT * FROM link 
+</select>
+<!--public List<Affiche> selectgong();-->  
+
+<select id="selectgong" resultType="com.xuexi.mybatis.Affiche">
+SELECT * FROM affiche order by id desc
+</select>
+
+<!-- public List<Article> search(@Param("name")String name); -->
+
+<select id="search" resultType="com.xuexi.mybatis.Article">
+SELECT* FROM blogs WHERE title LIKE CONCAT('%',#{name},'%')
+</select>
+
+<!-- 	public void insertComment(@Param("comment")Comment comment); -->
+<!-- id  content     bid     uid   -->
+<insert id="insertComment">
+insert into comment(content,bid,uid)values(#{comment.content},#{comment.bid},#{comment.uid})
+</insert>
+
+<!-- public List<Comment> allComments(int bid)  -->
+<select id="allComments" resultType="com.xuexi.mybatis.Comment">
+select* from comment where bid=#{bid} order by id desc
+</select>
+</mapper>
