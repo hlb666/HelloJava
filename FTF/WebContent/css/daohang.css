@@ -1,0 +1,88 @@
+@CHARSET "UTF-8";
+#allmap {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+#left {
+	margin-top:20px;
+	padding-left:10px;
+	padding-top:15px;
+	width: 50%;
+	height: 50px;
+	background: #DDDDDD;
+	line-height: 50px;
+	text-align: centre;
+	float: left;
+	z-index: 99;
+}
+
+.time1 {
+
+	padding-right:15px;
+	margin-top:20px;
+	width: 50%;
+	height: 50px;
+	background: #DDDDDD;
+	line-height: 50px;
+	text-align: right;
+	float: right;
+	z-index: 99;
+}
+
+.qq {
+	outline: 0;
+	width:10px;
+	color: #986655;
+	height: 2em;
+	float: left;
+}
+
+.qqq {
+	width:10px;
+	outline: 0;
+	color: #986655;
+	height: 2em;
+	float: left;
+}
+
+.aa {
+	padding-left:160px;
+	text-align: center;
+	float: left;
+}
+.aaa {
+	padding-top:3px;
+	height:40px;
+	padding-left:15px;
+	float: left;
+}
+.selects{
+	border: 1px solid gray;
+	border-radius:5px;
+	height: 40px;	
+	margin-right:10px;
+	
+}
+.aaa > select{
+	height:30px;
+	padding-left:15px;
+	float: left;
+}
+.baoguo{
+	height:50px;
+	width:98.5%;
+	position: absolute;
+	top:80px;
+	border-bottom: 1px solid gray;
+}
+.heads{
+	z-index: -99;
+	margin-right: 15px;
+	
+}
+.lineone{
+	width: 1104px;
+}

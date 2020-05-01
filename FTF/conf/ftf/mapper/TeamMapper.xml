@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ftf.dao.TeamMapper">
+	<!-- public void insert(@Param("team")Team team); -->
+	<insert id="insert">
+		INSERT INTO teamlaunch(pic,title,uid,tid,date,content,lng,lat,distance)
+		values(#{team.pic},#{team.title},#{team.uid},#{team.tid},#{team.date},#{team.content},#{team.lng},#{team.lat},#{team.distance})
+	</insert>
+	<!-- public List<Team> getAll(@Param("team")Team team) -->
+	<select id="getAll" resultType="com.ftf.beans.Team">
+		select* from teamlaunch where tid=#{team.tid}
+	</select>
+	<!-- public Team getById(int id) -->
+	<select id="getById" resultType="com.ftf.beans.Team">
+		select* from teamlaunch where id=#{id}
+	</select>
+
+	<!-- public Type getAllById(@("type")Type type) -->
+	<select id="getAllById" resultType="com.ftf.beans.Type">
+		SELECT id,typename as type FROM TYPE WHERE id=#{type.id}
+	</select>
+	<!-- public void addToInvolve(InvolueTeam involueTeam); -->
+	<insert id="addToInvolve">
+		insert into involveteam(name,age,sex,email,sid,uid)
+		values(#{involueTeam.name},#{involueTeam.age},#{involueTeam.sex},#{involueTeam.email},#{involueTeam.sid},#{involueTeam.uid})
+	</insert>
+	<!-- public List<Team> getAllStart(@Param("team")Team team); -->
+	<select id="getAllStart" resultType="com.ftf.beans.Team">
+		select* from teamlaunch where uid=#{team.uid}
+	</select>
+	<!-- public List<InvolueTeam> involueTeams(int sid) -->
+	<select id="involueTeams" resultType="com.ftf.beans.InvolueTeam">
+		select* from involveteam where sid=#{sid}
+	</select>
+	<!-- public List<InvolueTeam> involueTeamfrorEc(); -->
+	<select id="involueTeamfrorEc" resultType="com.ftf.beans.InvolueTeam">
+		SELECT COUNT(*) AS id,sex FROM involveteam WHERE sid=#{sid} GROUP BY sex
+	</select>
+	<!-- public List<InvolueTeam> involueTeamsfrorAll(int uid) -->
+	<select id="involueTeamsfrorAll" resultType="com.ftf.beans.InvolueTeam">
+		select* from involveteam where uid=#{uid}
+	</select>
+	<!-- public void deleteInvolve(int id) -->
+	<delete id="deleteInvolve">
+		delete from involveteam where id=#{id}
+	</delete>
+	<!-- public void deleteLuanch(int id) -->
+	<delete id="deleteLuanch">
+		delete from teamlaunch where id=#{id}
+	</delete>
+	<!-- public List<Team> getAlladmin() -->
+	<select id="getAlladmin" resultType="com.ftf.beans.Team">
+		select* from teamlaunch
+	</select>
+	<!-- public List<User> getAlluser() -->
+	<select id="getAlluser" resultType="com.ftf.beans.User">
+		select* from user
+	</select>
+	<!-- public void search(Search search); -->
+	<insert id="search">
+		INSERT INTO search(searched,uid)
+		values(#{search.searched},#{search.uid})
+	</insert>
+	<!-- public List<Search> getSea(Search search); -->
+	<select id="getSea" resultType="com.ftf.beans.Search">
+		select searched from search where
+		uid=#{search.uid} ORDER BY id DESC
+	</select>
+
+</mapper>

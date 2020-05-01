@@ -1,0 +1,44 @@
+@CHARSET "UTF-8";
+form {
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+}
+.search_one {
+	margin-left:7%;
+	width: 78%;
+	height: 42px;
+	padding-left: 10px;
+	border: 2px solid #808080;
+	border-radius: 5px;
+	top: -10px;
+}
+.search_two{
+	background: #dddddd;
+	border-radius:8px;
+	width: 7%;
+	float: right;
+	margin-right:7%;
+	height: 42px;
+}
+
+.qq {
+	margin-top: 10px;
+}
+.biao {
+	margin-left: 7%;
+	margin-right: 3%;
+	width: 400px;
+	float: left;
+	position: absolute;
+}
+
+.biaoge {
+	margin-left: 3%;
+	margin-right: 7%;
+	overflow-y:scroll;
+	height:500px;
+	border:1px solid red;
+	width: 400px;
+	float: right;
+}

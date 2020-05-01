@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+<!-- ===============spring的配置 其希望管理所有业务逻辑组件=================== -->
+<context:component-scan base-package="com.ftf">
+  <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+</context:component-scan>
+
+<!-- 引来数据库配置文件 -->
+<context:property-placeholder location="classpath:dbconfig.properties"/>
+<!-- Spring 用来控制业务逻辑 。数据源 事务 aop 等 -->
+<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+  <property name="jdbcUrl" value="${jdbc.url}"></property>
+  <property name="driverClass" value="${jdbc.driver}"></property>
+  <property name="user" value="${jdbc.username}"></property>
+  <property name="password" value="${jdbc.password}"></property>
+</bean>
+<!-- spring 事务管理器 -->
+<bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  <property name="dataSource" ref="dataSource"></property>
+</bean>
+<!-- 开启基于注解事务的管理 -->
+<tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
+
+<!-- 
+在这里整合mybaties 其用来操作数据库 原来在这里是用JDBCTemplate处理数据库
+   目的：1.spring管理所有组件。mapper的实现类
+       service==>Dao @Autowired:自动注入mapper
+     2.spring用来管理事务
+ -->
+ 
+ 
+<!-- ========在这里是将mybaties-config相关的文件配置放到这里 -->
+<!-- 创建sqlSessionFactory对象 -->
+<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+<property name="dataSource" ref="dataSource"></property>
+<!-- configLocation用来配置制定的全局文件的位置  -->
+<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+<!-- mapperLocations用来配置制定的mapper的位置  -->
+<property name="mapperLocations" value="classpath:ftf/mapper/*.xml"></property>
+</bean>
+<!-- 扫描所有的mapper的接口的实现，让这些mapper能够自动的注入 -->
+<!--
+ 第一种扫描的配置
+<mybatis-spring:scan base-package="com.xuexi.mybatis.dao"/>
+ -->
+<!-- 第二种扫描的配置 -->
+<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+   <property name="basePackage" value="com.ftf.dao"></property>
+</bean>
+</beans>

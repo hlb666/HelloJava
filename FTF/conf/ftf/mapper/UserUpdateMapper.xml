@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.ftf.dao.UserUpdateMapper">
+ <!-- public void updateUser(@Param("user")User user); -->
+ <update id="updateUser">
+ update user set username=#{user.username},password =#{user.password},email=#{user.email},pic=#{user.pic} where id=#{user.id }
+ </update>
+ <!-- public String erWeiMa(int id)  -->
+ <select id="erWeiMa" resultType="com.ftf.beans.ErWeiMa">
+  select* from erweima where id=#{id}
+ </select>
+ </mapper>

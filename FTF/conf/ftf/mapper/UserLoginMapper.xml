@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ftf.dao.UserLoginMapper">
+<!-- public void add(User user); -->
+<insert id="add">
+  insert into user(username,password,email)values(#{user.username},#{user.password},#{user.email})
+</insert>
+<!-- public User check(String name)  -->
+<select id="check" resultType="com.ftf.beans.User">
+   select* from user where username=#{name}
+</select>
+<!-- public User getPassword(@Param("user")User user) -->
+<select id="getPassword" resultType="com.ftf.beans.User">
+   select* from user where email=#{user.email}
+</select>
+<!-- public User getExit(@Param("user")User user) -->
+<select id="getExit" resultType="com.ftf.beans.User">
+   select* from user where username=#{user.username} and password = #{user.password}
+</select>
+<!-- public User getById(int id) -->
+<select id="getById" resultType="com.ftf.beans.User">
+select* from user where id=#{id}
+</select>
+<!-- public Admin Login(@Param("admin")Admin admin) -->
+<select id="Login" resultType="com.ftf.beans.Admin">
+select* from Admin where name=#{admin.name} and password=#{admin.password}
+</select>
+<!-- public void delectUser(Integer id) -->
+  <delete id="delectUser">
+   delete from user where id=#{id}
+ </delete>
+  <!-- public void delectZudui(Integer id) -->
+  <delete id="delectZudui">
+   delete from teamlaunch where id=#{id}
+ </delete>
+ <!-- public List<Team> All() -->
+ <select id="All" resultType="com.ftf.beans.Team">
+  SELECT* FROM teamlaunch LIMIT 0,8
+ </select>
+</mapper>

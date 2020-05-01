@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+.yue_nav{
+width: 90%;
+height:10%;
+background-color:red;
+border: 1px solid red;	
+}
+.yue_neirong{
+width:98%;
+height: 90%;
+border: 1px solid red;
+background-color: red;
+}
+.dropdown{	
+	border: 1px solid red;
+}
+.yue_ifram{
+width: 100%;
+height: 90%;		
+}
+.yue_add{
+	width: 20px;
+	height: 20px;
+	border: 1px soli red;
+	
+}

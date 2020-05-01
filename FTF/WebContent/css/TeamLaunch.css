@@ -1,0 +1,118 @@
+@CHARSET "UTF-8";
+.lun_body{
+	border: 1px solid #5CADAD;
+}
+.lun_head{
+    border-radius:20px 20px 0px 0px;
+	margin-top:10px;
+	margin-left:5%;
+	width: 90%;
+	height: 120px;
+	border: 1px solid #5CADAD;
+	overflow: hidden;
+	
+}
+#lun_head_one{
+	width:100%;
+	height:20%;	
+	background-color: gray;	
+}
+#lun_head_two{
+	width:100%;
+	height:80%;	
+	text-align: center;
+	padding-top:2%;
+	font-size: 26px;
+	background-color:#DDDDDD;
+}
+.lun_body{	
+    margin-left:5%;
+	width: 90%;
+}
+.panel-heading{   
+	background-color:#DDDDDD;
+	font-size:16px;
+	text-align: center;	
+}
+.biaoti{
+	width:100%;
+	color: gray;
+}
+.lun_submit{
+	width: 50%;
+	height: 40px;
+	margin-left: 25%;
+	border-radius:20px;	
+}
+.panel-body{
+	width: 100%;
+}
+.panel_one_wrap{
+	width: 100%;
+	height: 180px;
+
+}
+.panel_one_left{
+	width: 30%;
+	height: 180px;
+	float: left;
+	border-right: #DDDDDD;
+	
+}
+.panel_one_right{
+	width: 70%;
+	height: 180px;
+	float: left;
+}
+.panel_one_left_img{
+	width: 60%;
+	height: 160px;
+	border: 1px solid black;
+	border-radius:20px;
+	overflow: hidden;
+	float: left;
+}
+.panel_one_left_btn{
+	width: 40%;
+	height: 30px;
+	border: 1px solid black;
+	border-radius:20px;
+	margin-top:145px;
+    overflow: hidden;
+	float: left;
+	cursor:pointer;
+	text-align: center;
+	padding-top: 2px;
+	background-color: gray;
+	color: white;
+}
+.panel_one_left_btn>input{
+	cursor: pointer;
+}
+.panel_one_right_input{
+	border-radius:20px;
+	margin-bottom:5px; 
+}
+
+.laun_text{
+	width: 100%;
+	height: 200px;	
+	border: 1px solid red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
